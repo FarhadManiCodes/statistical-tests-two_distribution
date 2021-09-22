@@ -16,9 +16,10 @@ distance_metrics = [wasserstein_distance,
                      cramer_distance,
                      alexander_distance,
                      ttest_dist]
-num_total_warnings = 0
-num_of_iterations = 5000
+# num_total_warnings = 0 # in the run for the note book it was here wrongly
+num_of_iterations = 5000 
 for method in distance_metrics:
+    num_total_warnings = 0
     for i in range(num_of_iterations):
         girls_train = ex.girls_height_distribution(80, 101)
         boys_train = ex.boys_height_distribution(80, 101)
