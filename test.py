@@ -13,9 +13,11 @@ distance_metrics = [wasserstein_distance,
                      mean_distance, 
                      ks,
                      epps_singleton,
-                     cramer_distance]
+                     cramer_distance,
+                     alexander_distance,
+                     ttest_dist]
 num_total_warnings = 0
-num_of_iterations = 10000
+num_of_iterations = 5000
 for method in distance_metrics:
     for i in range(num_of_iterations):
         girls_train = ex.girls_height_distribution(80, 101)

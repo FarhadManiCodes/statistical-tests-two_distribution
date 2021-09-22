@@ -4,7 +4,10 @@ from typing import  Callable, Dict, Tuple
 import numpy as np
 from scipy.stats import (ks_2samp,
                          cramervonmises_2samp,
-                         epps_singleton_2samp)
+                         epps_singleton_2samp,
+                         anderson_ksamp,
+                         alexandergovern,
+                         ttest_rel)
 import warnings
 
 
@@ -61,3 +64,21 @@ def cramer_distance(a:np.ndarray, b:np.ndarray) -> float:
     
     """
     return  1.0 - cramervonmises_2samp(a,b).pvalue
+
+def alexander_distance(a:np.ndarray, b:np.ndarray) -> float:
+    """
+    calculate the distance between the distributions 
+    based on Alexander Govern test.
+    
+    """
+    return 1.0 - alexandergovern(a,b).pvalue
+
+
+def ttest_dist(a:np.ndarray, b:np.ndarray) -> float:
+    """
+    calculate the distance between the distributions 
+    based on ttest.
+    
+    """
+    a_s, b_s = make_same_size(a,b)
+    return 1-ttest_rel(a_s,b_s).pvalue
